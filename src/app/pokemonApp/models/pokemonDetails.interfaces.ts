@@ -1,6 +1,5 @@
 export interface PokemonDetails {
   base_experience: number;
-  forms: Species[];
   height: number;
   id: number;
   name: string;

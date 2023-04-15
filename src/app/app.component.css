@@ -1,4 +1,6 @@
-
+*{
+  font-family: 'Electrolize', sans-serif;
+}
 .mat-autocomplete-panel {
   width: calc(100% - 2px);
 }

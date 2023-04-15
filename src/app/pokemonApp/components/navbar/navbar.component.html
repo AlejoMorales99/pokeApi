@@ -1,14 +1,12 @@
 <nav class="navbar bg-dark" data-bs-theme="dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src="/assets/logo/pokeball.png" alt="Logo" width="60" height="60" class="d-inline-block text-align-center ">
+    <a class="navbar-brand fs-4" href="#">
+      <img src="/assets/logo/pokeball.png" alt="Logo" width="60" height="60" class="d-inline-block text-align-center mx-4">
       PokeApp 
     </a>
-  </div>
-  <div>
-      Button trigger modal
-<button type="button" class="btn btn-primary"  (click)="openFavoriteModal()" data-bs-toggle="modal" data-bs-target="#exampleModal" >
-  Launch demo modal
+  
+<button type="button" class="btn btn-light mr-10" (click)="openFavoriteModal(favoritePokemon)" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+<img src="/assets/logo/logo-pokebola.png" alt="Logo" width="30" height="30" class="d-inline-block text-align-center m-2">Pokemon Favorito
 </button>
 
 <div class="modal fade" *ngIf="favoritePokemon" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -28,5 +26,6 @@
     </div>
   </div>
 </div>
-    </div> 
+
+  </div>
 </nav>
