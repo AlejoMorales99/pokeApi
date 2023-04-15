@@ -1,0 +1,17 @@
+<div *ngIf="pokemonDetails" class="card" style="width: 18rem;">
+  <img [src]="pokemonDetails.pic!" [alt]="pokemonDetails.name" class="w-[20px]" />
+  <div class="card-body">
+    <h3 class="card-title">{{pokemonDetails.name}}</h3>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{pokemonDetails.base_experience}}</li>
+    <li class="list-group-item" *ngFor="let form of pokemonDetails.forms">{{form.name}}</li>
+    <li class="list-group-item">{{pokemonDetails.height}}</li>
+    <li class="list-group-item">{{pokemonDetails.weight}}</li>
+    <li class="list-group-item">{{pokemonDetails.order}}</li>
+    <li class="list-group-item" *ngFor="let type of pokemonDetails.types">{{type.type.name}}</li>
+  </ul>
+  <div class="card-body">
+    <a class="card-link">Card link</a>
+  </div>
+</div>

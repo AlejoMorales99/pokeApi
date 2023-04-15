@@ -1,0 +1,4 @@
+
+.mat-autocomplete-panel {
+  width: calc(100% - 2px);
+}
