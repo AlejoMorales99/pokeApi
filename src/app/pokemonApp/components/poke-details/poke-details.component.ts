@@ -9,5 +9,10 @@ export class PokeDetailsComponent {
 
 
   @Input() pokemonDetails!: PokemonDetails; 
+  isFavorite: boolean = false;
+
+  chooseFavorite(){
+    this.isFavorite= !this.isFavorite
+  }
 
 }

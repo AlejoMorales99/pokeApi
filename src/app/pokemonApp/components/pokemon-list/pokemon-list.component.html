@@ -30,9 +30,9 @@
 <table class="table table-light table-striped w-100">
   <thead>
     <tr>
-      <th class="text-center">#</th>
-      <th class="text-center">Nombre</th>
-      <th class="text-center">Imagen</th>
+      <th class="text-center fs-5">#</th>
+      <th class="text-center fs-5">Nombre</th>
+      <th class="text-center fs-5">Imagen</th>
     </tr>
   </thead>
   <tbody>
@@ -41,8 +41,8 @@
       (click)="onSelectPokemon(poke)"
       [ngStyle]="{ height: '100px'}"
     >
-      <td  class="text-center">{{ poke.id }}</td>
-      <td class="text-center text-uppercase">{{ poke.name }}</td>
+      <td  class="text-center fs-4">{{ poke.id }}</td>
+      <td class="text-center text-uppercase fs-3 ">{{ poke.name }}</td>
       <td class="text-center" >
         <img [src]="poke.pic" [alt]="poke.name" class="w-[20px]"/>
       </td>

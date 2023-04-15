@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PokemonDetails } from '../../models';
 
 @Component({
   selector: 'app-navbar',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
+  favoritePokemon: PokemonDetails | null = null;
+
+  openFavoriteModal( pokemon: PokemonDetails){
+    this.favoritePokemon = pokemon; 
+  }
+
+  closeFavoriteModal(){
+    this.favoritePokemon= null; 
+  }
 }

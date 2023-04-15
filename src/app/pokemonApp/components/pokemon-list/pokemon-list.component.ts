@@ -91,7 +91,6 @@ export class PokemonListComponent implements OnInit {
         const pokemonDetails: PokemonDetails = {
           pic:details.pic,
           base_experience: details.base_experience,
-          forms: details.forms,
           height: details.height,
           id: details.id,
           name: details.name,
