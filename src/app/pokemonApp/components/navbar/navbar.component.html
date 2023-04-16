@@ -1,31 +1,53 @@
 <nav class="navbar bg-dark" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand fs-4" href="#">
-      <img src="/assets/logo/pokeball.png" alt="Logo" width="60" height="60" class="d-inline-block text-align-center mx-4">
-      PokeApp 
+      <img
+        src="/assets/logo/pokeball.png"
+        alt="Logo"
+        width="60"
+        height="60"
+        class="d-inline-block text-align-center mx-4"
+      />
+      PokeApp
     </a>
-  
-<button type="button" class="btn btn-light mr-10" (click)="openFavoriteModal(favoritePokemon)" data-bs-toggle="modal" data-bs-target="#exampleModal" >
-<img src="/assets/logo/logo-pokebola.png" alt="Logo" width="30" height="30" class="d-inline-block text-align-center m-2">Pokemon Favorito
-</button>
+        <button type="button" class="btn btn-light" (click)="openFavoriteModal(favoriteModalContent, favoritePokemon)">
+          <img
+        src="/assets/logo/logo-pokebola.png"
+        alt="Logo"
+        width="30"
+        height="30"
+        class="d-inline-block text-align-center m-2"
+      />Pokemon Favorito:
+      <span *ngIf="favoritePokemon">{{ favoritePokemon.name }}</span
+      ><span *ngIf="!favoritePokemon">No hay favoritos</span>
+        </button>
 
-<div class="modal fade" *ngIf="favoritePokemon" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
+    <ng-template #favoriteModalContent let-modal>
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h4 class="modal-title">Detalles de {{ favoritePokemon.name }}</h4>
+        <button
+          type="button"
+          class="btn-close"
+          (click)="modal.dismiss()"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
-        ...
+        <p>Height: {{ favoritePokemon.height }}</p>
+        <p>Weight: {{ favoritePokemon.weight }}</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" (click)="closeFavoriteModal()">Save changes</button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="modal.dismiss('cancel click')"
+        >
+          Cerrar
+        </button>
+        <button type="button" class="btn btn-primary" (click)="modal.close()">
+          Guardar
+        </button>
       </div>
-    </div>
-  </div>
-</div>
-
+    </ng-template>
   </div>
 </nav>
