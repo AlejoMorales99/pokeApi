@@ -14,11 +14,11 @@ import { PokeDetailsComponent } from '../components/poke-details/poke-details.co
 @NgModule({
   declarations: [
     PokemonListComponent,
-    NavbarComponent,
+    PokeDetailsComponent,
     FiltroPipe,
     PokeAlphabetComponent,
+    NavbarComponent,
     PokemonComponent,
-    PokeDetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -29,11 +29,11 @@ import { PokeDetailsComponent } from '../components/poke-details/poke-details.co
   ],
   exports: [
     PokemonListComponent,
-    NavbarComponent,
+    PokeDetailsComponent,
     PokeAlphabetComponent,
     PokemonComponent,
+    NavbarComponent,
     FiltroPipe,
-    PokeDetailsComponent,
   ],
   providers:[FiltroPipe]
 })

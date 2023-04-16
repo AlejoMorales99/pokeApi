@@ -24,14 +24,16 @@
     <li class="list-group-item fs-6">Altura: {{ pokemonDetails.height }} ft</li>
   </ul>
   <p class="text-center fs-6 my-2">TIPO POKEMON</p>
-  <ul>
-    <li class="list-group-item" *ngFor="let type of pokemonDetails.types">
+  <ul class="list-group list-group-horizontal border-0">
+    <li class="list-group-item list-group-item-warning mx-3 " *ngFor="let type of pokemonDetails.types">
       {{ type.type.name | uppercase }}
     </li>
   </ul>
   <div class="card-body text-center">
     <button
-    [disabled]="isDisable" (click)="chooseFavorite()"
+      (click)="chooseFavorite()"
+      [disabled]="isAddFavoriteDisabled && !favoriteRemoved"
+      [ngClass]="{ disabled: isAddFavoriteDisabled && !favoriteRemoved }"
       class="btn btn-outline-danger rounded-pill"
     >
       {{

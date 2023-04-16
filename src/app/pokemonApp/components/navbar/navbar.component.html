@@ -10,21 +10,16 @@
       />
       PokeApp
     </a>
-        <button type="button" class="btn btn-light" (click)="openFavoriteModal(favoriteModalContent, favoritePokemon)">
-          <img
-        src="/assets/logo/logo-pokebola.png"
-        alt="Logo"
-        width="30"
-        height="30"
-        class="d-inline-block text-align-center m-2"
-      />Pokemon Favorito:
-      <span *ngIf="favoritePokemon">{{ favoritePokemon.name }}</span
-      ><span *ngIf="!favoritePokemon">No hay favoritos</span>
-        </button>
+    <button type="button" id="favorite-button" class="btn btn-light m-3" (click)="openFavoriteModal(favoriteModal, favoritePokemon)">
+      <img src="/assets/logo/logo-pokebola.png" alt="Logo" width="30" height="30" class="d-inline-block text-align-center m-2" />
+      Pokemon Favorito
+      <span class="fs-5" *ngIf="favoritePokemon.name">{{ favoritePokemon.name | uppercase }}</span>
+      <span *ngIf="!favoritePokemon.name">No hay favoritos</span>
+    </button>
 
-    <ng-template #favoriteModalContent let-modal>
+    <ng-template class="border border-5 border-danger rounded-5" #favoriteModal  *ngIf="favoritePokemon" let-modal>
       <div class="modal-header">
-        <h4 class="modal-title">Detalles de {{ favoritePokemon.name }}</h4>
+        <p class="modal-title fs-2">#{{favoritePokemon.order}}   {{ favoritePokemon.name | uppercase}}</p>
         <button
           type="button"
           class="btn-close"
@@ -33,21 +28,34 @@
         ></button>
       </div>
       <div class="modal-body">
-        <p>Height: {{ favoritePokemon.height }}</p>
-        <p>Weight: {{ favoritePokemon.weight }}</p>
+        <div class="container-fluid">
+          <div class="row">
+        <img [src]="favoritePokemon.pic" [alt]="favoritePokemon.name" class="w-[40px]"/>
+        <p class="fs-6">TIPO POKEMON</p>
+        <ul class="list-group list-group-horizontal mb-2">
+          <li class="list-group-item list-group-item-success m-2" *ngFor="let type of favoritePokemon.types">
+            {{ type.type.name | uppercase }}
+          </li>
+        </ul>
+        <p></p>
+        <p class="fs-5">Experiencia: {{ favoritePokemon.base_experience }}</p>
+        <p class="fs-5" >Altura: {{ favoritePokemon.height }} ft</p>
+        <p class="fs-5">Peso: {{ favoritePokemon.weight }} kg </p>
       </div>
       <div class="modal-footer">
         <button
           type="button"
-          class="btn btn-secondary"
+          class="btn btn-outline-primary rounded-pill"
           (click)="modal.dismiss('cancel click')"
         >
           Cerrar
         </button>
-        <button type="button" class="btn btn-primary" (click)="modal.close()">
-          Guardar
+        <button type="button" class="btn btn-danger rounded-pill" (click)="removeFavoritePokemon(favoritePokemon.id)">
+          Eliminar de Favorito
         </button>
       </div>
+      </div>
+    </div>
     </ng-template>
   </div>
 </nav>
