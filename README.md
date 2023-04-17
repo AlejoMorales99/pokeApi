@@ -1,27 +1,17 @@
 # PokeApp
+Es una aplicación Single Page elaborada con Angular y la API PokeApi, que permite al usuario visualizar una tabla paginada con información acerca de los diferentes pokémon. La tabla cuenta con una barra de búsqueda que muestra instantáneamente la compatibilidad con los términos buscados y también emite una alerta en caso de que la búsqueda no coincida con la lista de pokémon disponibles. Al seleccionar un pokémon, se muestra una tarjeta con detalles del elegido de la lista, que incluye un botón para agregarlo a los favoritos. Al seleccionar un pokémon como favorito, se destina a un botón para almacenar la elección del usuario, y al hacer clic en el botón, se abre un modal con la información del pokémon seleccionado como favorito. Además, la aplicación incluye una tabla que muestra tarjetas con la cantidad de pokémon que comienzan con cada letra del abecedario.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.1.
+## Tecnologías 
+- Angular 15   
+- Bootstrap 5   
+- Angular Material  
+- API [PokeAPI](https://pokeapi.co/)
 
-## Development server
+### Para descargar e instalar Aplicación
+```
+git clone
+npm install
+ng serve || ng s 
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
