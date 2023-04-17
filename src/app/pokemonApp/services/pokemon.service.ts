@@ -1,4 +1,3 @@
-import { environment } from './../../../environments/environment';
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
@@ -10,7 +9,7 @@ import { FecthPokemon, Pokemon, PokemonDetails } from "../models";
   providedIn: "root",
 })
 export class PokemonService {
-  private url: string = environment.apiUrl;
+  private url: string = 'https://pokeapi.co/api/v2';
 
   constructor(private http: HttpClient) {}
 
