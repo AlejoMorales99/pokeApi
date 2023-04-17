@@ -1,76 +1,84 @@
 <div class="row">
-<div class="col-8">
-  <div class="bg-danger  border-bottom border-5 border-end border-black rounded-5 w-75">
-<div class="container-fluid mt-2 w-50 p-1">
-  <form class="d-flex p-1 justify-content-center " role="search">
-    <mat-form-field>
-      <input
-        matInput
-        type="text"
-        placeholder="Buscar Pokemon"
-        [formControl]="myControl"
-        aria-label="Search"
-        (keyup)="onSearchPokemon(myControl.value)"
-      />
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option
-          *ngFor="let option of filteredOptions | async"
-          [value]="option"
+  <div class="col-md-6">
+    <div class="container fixed container-xl bg-danger fixed border-bottom border-5 border-end border-black rounded-5 w-100">
+      <div class="container mt-2 w-50 p-1">
+        <form class="d-flex p-1 justify-content-center " role="search">
+          <mat-form-field>
+            <input
+              matInput
+              type="text"
+              placeholder="Buscar Pokemon"
+              [formControl]="myControl"
+              aria-label="Search"
+              (keyup)="onSearchPokemon(myControl.value)"
+            />
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option
+                *ngFor="let option of filteredOptions | async"
+                [value]="option"
+              >
+                {{ option }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
+        <div class="not-found" *ngIf="pokemonNotFound">
+          <p class="text-bg-warning text-center fs-6">
+            No se ha encontrado pokemon para "{{ search }}"
+          </p>
+        </div>
+      </div>
+      <div class="justify-content-center rounded-5 mx-4">
+        <table
+          class="table table-light table-hover table-striped w-100 table-responsive align-middle"
         >
-          {{ option }}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-  </form>
-  <div class="not-found" *ngIf="pokemonNotFound">
-    <p class="text-bg-warning text-center fs-6">No se ha encontrado pokemon para "{{ search }}"</p>
+          <thead>
+            <tr>
+              <th class="text-center fs-md-5">#</th>
+              <th class="text-center fs-md-5">Nombre</th>
+              <th class="text-center fs-md-5">Imagen</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let poke of filteredPokemons"
+              (click)="onSelectPokemon(poke)"
+              [ngStyle]="{ height: '100px' }"
+            >
+              <td class="text-center fs-6 fs-md-4">{{ poke.id }}</td>
+              <td class="text-center fs-5 text-uppercase fs-md-3 ">{{ poke.name }}</td>
+              <td class="text-center">
+                <img [src]="poke.pic" [alt]="poke.name" class="w-[20px]" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <nav aria-label="Page navigation ">
+        <ul class="pagination justify-content-center ">
+          <li class="page-item">
+            <button
+              class="btn btn-outline-dark border-3  mx-5 rounded-circle btn-large "
+              (click)="prevPage()"
+              aria-label="Previous"
+            >
+              <span aria-hidden="true">&laquo;</span>
+            </button>
+          </li>
+          <li class="page-item">
+            <button
+              class="btn btn-outline-dark border-3 rounded-circle btn-large mx-5"
+              (click)="nextPage()"
+              aria-label="Next"
+            >
+              <span aria-hidden="true">&raquo;</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
     </div>
-</div>
-<div class="justify-content-center rounded-5 mx-4">
-<table class="table table-light table-striped w-100">
-  <thead>
-    <tr>
-      <th class="text-center fs-5">#</th>
-      <th class="text-center fs-5">Nombre</th>
-      <th class="text-center fs-5">Imagen</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr
-      *ngFor="let poke of filteredPokemons"
-      (click)="onSelectPokemon(poke)"
-      [ngStyle]="{ height: '100px'}"
-    >
-      <td  class="text-center fs-4">{{ poke.id }}</td>
-      <td class="text-center text-uppercase fs-3 ">{{ poke.name }}</td>
-      <td class="text-center" >
-        <img [src]="poke.pic" [alt]="poke.name" class="w-[20px]"/>
-      </td>
-    </tr> 
-  </tbody>
-</table>
-</div>
-<nav aria-label="Page navigation ">
-  <ul class="pagination justify-content-center ">
-    <li class="page-item">
-      <button class="btn btn-outline-dark border-3  mx-5 rounded-circle btn-large " (click)="prevPage()" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </button>
-    </li>
-    <li class="page-item">
-      <button
-        class="btn btn-outline-dark border-3 rounded-circle btn-large mx-5"
-        (click)="nextPage()"
-        aria-label="Next"
-      >
-        <span aria-hidden="true">&raquo;</span>
-      </button>
-    </li>
-  </ul>
-</nav>
-</div>
-</div>
-<div class="col-4">
-  <app-poke-details [pokemonDetails]="selectedPokemon[0]"></app-poke-details>
-</div>
+  </div>
+  <div class="col-md-6 mt-3">
+    <app-poke-details [pokemonDetails]="selectedPokemon[0]"></app-poke-details>
+  </div>
 </div>

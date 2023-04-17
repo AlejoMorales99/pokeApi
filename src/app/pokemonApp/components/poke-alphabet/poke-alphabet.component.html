@@ -1,13 +1,15 @@
-<div class="container text-center bg-warning-subtle border border-4 border-warning-subtle rounded-5 p-6 m-5">
-  <p class="fs-2 my-4">POKE-ABC</p>
-  <div class="row row-cols-5 m-3">
-    <div *ngFor="let count of letterCounts" class="col">
-      <div class="card text-bg-warning m-2" style="max-width: 18rem;">
-        <div class="card-header fs-3 m-1" >{{count.letter | uppercase}}</div>
-        <div class="card-body">
-          <p class="card-title text-center fs-4">{{count.count}}</p>
+<body class="text-center">
+  <div class="container-fluid bg-warning-subtle border border-4 border-warning-subtle rounded-5 m-1 p-2 p-xl-6 m-xl-5">
+    <p class=" fs-5 fs-lx-2 my-2 my-lx-4">POKE-ABC</p>
+    <div class="row row-cols row-cols-3 row-cols-md-6 row-cols-lg-8 m-sm-1 m-3">
+      <div *ngFor="let count of letterCounts" class="col">
+        <div class="card text-bg-warning m-2" style="max-width: 18rem;">
+          <div class="card-header fs-xl-3 m-1">{{count.letter | uppercase}}</div>
+          <div class="card-body">
+            <p class="card-title text-center fs-xl-4">{{count.count}}</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</body>

@@ -1,18 +1,16 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import {
-  FecthPokemon,
-  Pokemon,
-  PokemonDetails
-} from '../models';
+import { environment } from './../../../environments/environment';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
+import { FecthPokemon, Pokemon, PokemonDetails } from "../models";
+
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class PokemonService {
-  private url: string = 'https://pokeapi.co/api/v2';
+  private url: string = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 
@@ -29,13 +27,13 @@ export class PokemonService {
       map((data) => ({
         ...data,
         pic: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.id}.png`,
-      })),
+      }))
     );
   }
 
   private showAPokemon(resp: FecthPokemon): Pokemon[] {
-    const pokemonList: Pokemon[] = resp.results.map(poke => {
-      const urlArr = poke.url.split('/');
+    const pokemonList: Pokemon[] = resp.results.map((poke) => {
+      const urlArr = poke.url.split("/");
       const id = urlArr[6];
       const pic = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
 
@@ -44,7 +42,7 @@ export class PokemonService {
       return {
         id,
         pic,
-        name: poke.name
+        name: poke.name,
       };
     });
 

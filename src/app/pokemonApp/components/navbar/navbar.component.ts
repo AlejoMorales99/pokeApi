@@ -13,11 +13,11 @@ export class NavbarComponent implements OnInit {
   public favoritePokemonIds: string[] = [];
   public favoritePokemonName: string = "";
   public isFavorite: boolean = false;
+  public isPokemonDeleted: boolean = false;
 
-  @ViewChild("pokeDetails") pokeDetailsComponent:
-    | PokeDetailsComponent
-    | undefined;
-    @ViewChild("favoriteModal") favoriteModal: any;
+  @ViewChild("pokeDetails") pokeDetailsComponent?: PokeDetailsComponent;
+
+  @ViewChild("favoriteModal") favoriteModal: any;
 
   constructor(
     private modalService: NgbModal,
@@ -31,11 +31,11 @@ export class NavbarComponent implements OnInit {
       (pokemon: PokemonDetails) => {
         this.onFavoritePokeSelected(pokemon);
       }
-    );
-  }
-
-  updateFavoritePokemonName(pokemonName: string) {
-    this.favoritePokemonName = pokemonName;
+      );
+    }
+    
+    updateFavoritePokemonName(pokemonName: string) {
+      this.favoritePokemonName = pokemonName;
   }
 
   openFavoriteModal(content: any, pokemon: PokemonDetails | null) {
@@ -43,23 +43,31 @@ export class NavbarComponent implements OnInit {
       this.favoritePokemon = pokemon;
     } else {
       this.getFavoritePokemon();
+      
     }
-  
     if (this.pokeDetailsComponent) {
       this.pokeDetailsComponent.chooseFavorite();
     }
-  
+
     this.modalService.open(content, { centered: true }).result.then(
       (result) => {
-        console.log(`Modal result: ${result}`);
+        if (this.isPokemonDeleted) {
+          // Si se eliminó el Pokemon favorito, establecer como objeto vacío
+          this.favoritePokemon = {} as PokemonDetails;
+          this.isPokemonDeleted = false;
+        }
         this.favoriteModal.componentInstance.pokeDetailsComponent.resetFavorite();
       },
       (reason) => {
-        console.log(`Modal dismissed with reason: ${reason}`);
+        if (this.isPokemonDeleted) {
+          // Si se eliminó el Pokemon favorito, establecer como objeto vacío
+          this.favoritePokemon = {} as PokemonDetails;
+          this.isPokemonDeleted = false;
+        }
         this.favoriteModal.componentInstance.pokeDetailsComponent.resetFavorite();
       }
-    )
-    }
+    );
+  }
 
   closeFavoriteModal() {
     this.favoritePokemon = {} as PokemonDetails;
@@ -67,10 +75,13 @@ export class NavbarComponent implements OnInit {
 
   onFavoritePokeSelected(pokemon: PokemonDetails | null) {
     this.favoritePokemon = pokemon || ({} as PokemonDetails);
-    console.log("select", this.favoritePokemon);
     const favoriteButton = document.getElementById("favorite-button");
     if (favoriteButton) {
-      favoriteButton.innerHTML = `Pokemon Favorito <span class="fs-5">${this.favoritePokemon.name ? this.favoritePokemon.name.toUpperCase() : "No hay favoritos"}</span>`;
+      favoriteButton.innerHTML = `Pokemon Favorito <span class="fs-5">${
+        this.favoritePokemon.name
+          ? this.favoritePokemon.name.toUpperCase()
+          : "No hay favoritos"
+      }</span>`;
     }
   }
 
@@ -80,7 +91,7 @@ export class NavbarComponent implements OnInit {
       this.pokeDetailsComponent.resetFavorite();
     }
   }
-  
+
   removeFavoritePokemon(pokemonId: number) {
     const idStr = pokemonId.toString();
     this.favoritePokemonService.removeFavoritePokemon(parseInt(idStr));
@@ -90,13 +101,12 @@ export class NavbarComponent implements OnInit {
     }
     this.resetFavoriteModal();
   }
-  
 
   private getFavoritePokemon() {
     const favoritePokemon = this.favoritePokemonService.getFavoritePokemon();
     if (favoritePokemon) {
       this.favoritePokemon = favoritePokemon;
-    }else {
+    } else {
       this.favoritePokemon = {} as PokemonDetails;
     }
   }

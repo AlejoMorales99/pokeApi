@@ -1,11 +1,13 @@
 <app-navbar></app-navbar>
 <div class="container">
-<div class="row">
-<app-pokemon-list></app-pokemon-list>
-</div>
-<div class="row">
-  <div class="col-12 mt-2">
-  <app-poke-alphabet [letterCounts]="letterCounts"></app-poke-alphabet>
-</div>
-</div>
+  <div class="row">
+    <div class="col-12">
+      <app-pokemon-list></app-pokemon-list>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 mt-2 col-sm-6 col-md-8 col-lg-9 col-xl-10">
+      <app-poke-alphabet [letterCounts]="letterCounts"></app-poke-alphabet>
+    </div>
+  </div>
 </div>
