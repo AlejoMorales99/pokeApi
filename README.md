@@ -7,6 +7,16 @@ Es una aplicación Single Page elaborada con Angular y la API PokeApi, que permi
 - Angular Material  
 - API [PokeAPI](https://pokeapi.co/)
 
+## Aspectos relevantes 
+ La Aplicación esta compuesta por un modulo principal ,que contiene las siguientes carpetas:
+ 
+- `SERVICES` se implementó dos servicios, uno para la conexion e  interacción con la API y el segundo, destinado a la manupulación de los datos obtenidos para poder interactuar entre los componentes y pasar datos entre ellos.                                                                             
+- `PIPES` se implementó pipes que permitieron realizar la paginación de la lista de pokemons, la busqueda  y filtro, al igual que para el conteo necesario para el Poke-ABC.
+
+- `MODELS` en esta carpeta de implementaron las interfaces necesarias para la estructura de los datos proveniendte de la api, como los necesario para la aplicación.
+- `MODULES` se denfinio un modulo donde concentrar las exportaciones , importaciones y modulos necesario para la aplicación. AL igual que un componente principal que permitia generar un template para unir los componentes necesarios en la aplicación. 
+- `COMPONENTS` para esta aplicación se crearon cinco componentes, encargados de mostrar la lista , otro  para mostrar detalles del Pokemon, la tabla del Poke-ABC y un navbar que conteniene al boton para abrir el modal donde se muestre el Pokemon favorito del usuario. 
+
 
 ### Vista Responsivas
 
