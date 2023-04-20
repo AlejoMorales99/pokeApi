@@ -6,7 +6,6 @@ import { FavoritePokemonService } from "../../services";
 @Component({
   selector: "app-navbar",
   templateUrl: "./navbar.component.html",
-  styleUrls: ["./navbar.component.css"],
 })
 export class NavbarComponent implements OnInit {
   public favoritePokemon: PokemonDetails = {} as PokemonDetails;

@@ -7,7 +7,6 @@ import { FiltroPipe } from '../../pipes/filtro.pipe';
 @Component({
   selector: 'app-poke-alphabet',
   templateUrl: './poke-alphabet.component.html',
-  styleUrls: ['./poke-alphabet.component.css']
 })
 export class PokeAlphabetComponent implements OnInit {
 

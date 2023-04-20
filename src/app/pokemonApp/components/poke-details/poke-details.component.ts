@@ -5,7 +5,6 @@ import { FavoritePokemonService } from "../../services";
 @Component({
   selector: "app-poke-details",
   templateUrl: "./poke-details.component.html",
-  styleUrls: ["./poke-details.component.css"],
 })
 export class PokeDetailsComponent {
   @Input() pokemonDetails?: PokemonDetails;

@@ -7,7 +7,6 @@ import { firstValueFrom } from "rxjs";
 @Component({
   selector: "app-pokemon",
   templateUrl: "./pokemon.component.html",
-  styleUrls: ["./pokemon.component.css"],
 })
 export class PokemonComponent implements OnInit {
   pokemons: Pokemon[] = [];
