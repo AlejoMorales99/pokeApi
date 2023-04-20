@@ -7,6 +7,9 @@ Es una aplicación Single Page elaborada con Angular y la API PokeApi, que permi
 - Angular Material  
 - API [PokeAPI](https://pokeapi.co/)
 
+## Deploy 
+ [POKE-APP](https://poke-angular-lovat.vercel.app/)
+
 ## Aspectos relevantes 
  La Aplicación esta compuesta por un modulo principal ,que contiene las siguientes carpetas:
  
